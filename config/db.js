@@ -3,6 +3,11 @@ const config = require("config");
 const db = config.get("mongoURI");
 
 const connectDB = async () => {
+  const option = {
+    socketTimeoutMS: 30000,
+    keepAlive: true,
+    reconnectTries: 30000
+  };
   try {
     await mongoose.connect(db, {
       useNewUrlParser: true,
